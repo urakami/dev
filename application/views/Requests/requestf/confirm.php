@@ -189,7 +189,7 @@
       </tr>
       <tr>
         <td width="20%" class="col3">伝言メモ</td>
-        <td><?php echo $data['message']; ?></td>
+        <td><?php echo nl2br($data['message']); ?></td>
       </tr>
     </table></td>
   </tr>

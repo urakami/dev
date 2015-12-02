@@ -189,7 +189,7 @@
       </tr>
       <tr>
         <td width="20%" class="col3">伝言メモ</td>
-        <td><?php echo $data['message']; ?></td>
+        <td><?php echo nl2br($data['message']); ?></td>
       </tr>
     </table></td>
   </tr>
@@ -199,7 +199,7 @@
   <tr>
     <td align="center">
         <a href="javascript:void(0);" onclick="goBack()"><img src="<?php echo base_url();?>img/btn_return.gif" width="200" height="45" /></a>
-        <a href="<?php  base_url();?>complete"><img src="<?php echo base_url();?>img/btn_order.gif" width="200" height="45" /></a></td>
+        <a href="<?php echo base_url();?>complete"><img src="<?php echo base_url();?>img/btn_order.gif" width="200" height="45" /></a></td>
   </tr>
   <tr>
     <td>&nbsp;</td>
