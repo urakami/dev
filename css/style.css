@@ -1,0 +1,43 @@
+@charset "utf-8";
+td {
+	font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+	font-size: 12px;
+	line-height: 18px;
+}
+.eng {
+	font-family: "Courier New", Courier, monospace;
+	font-size: 12px;
+	line-height: 18px;
+}
+.caution {
+	font-size: 12px;
+	line-height: 18px;
+	color: #C00;
+}
+.col2 {
+	background-color: #bbbbbb;
+	font-size: 12px;
+	line-height: 18px;
+}
+.col3 {
+	background-color: #dddddd;
+	font-size: 12px;
+	line-height: 18px;
+}
+.bg_error {
+	font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+	font-size: 12px;
+	line-height: 18px;
+	font-weight: bold;
+	color: #C00;
+	background-color: #FCF;
+}
+
+table tr td.btn-submit input {
+  background: url("../img/btn_check.gif") no-repeat scroll 0 0 transparent;
+  cursor: pointer;
+  border: 5px;
+  font-weight: bold;
+  height: 45px;
+  width: 200px;
+}
