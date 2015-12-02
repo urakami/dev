@@ -531,7 +531,7 @@ class Request extends CI_Controller {
 
         $data = $this->load->view('requests/templates/email', $data, true);
         $this->email->from('support@chiroro.com', 'Chiroro-Net Customer Support');
-        $this->email->to($data['email']);       
+        $this->email->to($data['data']['email']);       
         $this->email->cc('support@chiroro.com');
         $this->email->subject('【申込】大商OEMプラン');
         $this->email->message($data);            
