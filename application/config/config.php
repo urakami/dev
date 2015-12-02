@@ -23,7 +23,7 @@
 |
 */
 //$config['base_url'] = 'http://www.chiroro.co.jp/request/kaigisho-dt/';
-$config['base_url'] = 'http://localhost/dev/';
+$config['base_url'] = 'http://dev.local/';
 
 /*
 |--------------------------------------------------------------------------

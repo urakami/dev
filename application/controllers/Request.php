@@ -120,6 +120,9 @@ class Request extends CI_Controller {
          */        
         public function confirmL(){
             $data_input['data'] = $this->session->userdata('data_input');
+            if(empty($data_input)){
+                $this->backHome();
+            }
             $this->load->view('requests/requestl/confirm', $data_input);
         }
 
@@ -132,6 +135,9 @@ class Request extends CI_Controller {
             $data_input['data'] = $this->session->userdata('data_input');            
             $this->load->view('requests/requestl/complete', $data_input);
             $this->_sendEmail($data_input);
+            if(!empty($this->session->userdata('data_input'))){
+                $this->session->unset_userdata('data_input');
+            }
         }
         
         /*Order-Y
@@ -178,7 +184,7 @@ class Request extends CI_Controller {
                                "op_backup"          => $this->input->post("op_backup"),
                                "op_firewall"        => $this->input->post("op_firewall"),
                                "ssl"  => $this->input->post("ssl"),
-                               "IP_addressp"        => $this->input->post("IP_address"),
+                               "IP_address"        => $this->input->post("IP_address"),
                                "OS"                 => $this->input->post("OS"),
                                "Apache"             => $this->input->post("Apache"),
                                "PHP"                => $this->input->post("PHP"),
@@ -234,6 +240,9 @@ class Request extends CI_Controller {
          */        
         public function confirmY(){
             $data_input['data'] = $this->session->userdata('data_input');
+            if(empty($data_input)){
+                $this->backHome();
+            }
             $this->load->view('requests/requesty/confirm', $data_input);
         }
 
@@ -246,6 +255,9 @@ class Request extends CI_Controller {
             $data_input['data'] = $this->session->userdata('data_input');            
             $this->load->view('requests/requestc/complete', $data_input);
             $this->_sendEmail($data_input);
+            if(!empty($this->session->userdata('data_input'))){
+                $this->session->unset_userdata('data_input');
+            }
         }
         
         /*Order-C
@@ -346,9 +358,13 @@ class Request extends CI_Controller {
          *@Method: confirm 
          *
          */        
-        public function confirmC(){
+        public function confirmC()
+        {
             $data_input['data'] = $this->session->userdata('data_input');
-            $this->load->view('requests/requestlc/confirm', $data_input);
+            if(empty($data_input)){
+                $this->backHome();
+            }
+            $this->load->view('requests/requestc/confirm', $data_input);
         }
 
         /*Order-C
@@ -360,6 +376,9 @@ class Request extends CI_Controller {
             $data_input['data'] = $this->session->userdata('data_input');            
             $this->load->view('requests/requestc/complete', $data_input);
             $this->_sendEmail($data_input);
+            if(!empty($this->session->userdata('data_input'))){
+                $this->session->unset_userdata('data_input');
+            }
         }
         
         /*Order-F
@@ -460,9 +479,13 @@ class Request extends CI_Controller {
          *@Method: confirm 
          *
          */        
-        public function confirmF(){
-            $data_input['data'] = $this->session->userdata('data_input');
-            $this->load->view('requests/requestlf/confirm', $data_input);
+        public function confirmF()
+        {
+            $data_input['data'] = $this->session->userdata('data_input');            
+            if(empty($data_input)){
+                $this->backHome();
+            }
+            $this->load->view('requests/requestf/confirm', $data_input);
         }
 
         /*Order-C
@@ -474,6 +497,9 @@ class Request extends CI_Controller {
             $data_input['data'] = $this->session->userdata('data_input');            
             $this->load->view('requests/requestc/complete', $data_input);
             $this->_sendEmail($data_input);
+            if(!empty($this->session->userdata('data_input'))){
+                $this->session->unset_userdata('data_input');
+            }
         } 
 
 
@@ -495,22 +521,21 @@ class Request extends CI_Controller {
             $config['protocol'] = 'smtp';
             $config['smtp_host'] = 'ssl://smtp.googlemail.com';
             $config['smtp_port'] = '465';
-            $config['smtp_user'] = 'user@gmail.com';
-            $config['smtp_pass'] = 'password';
-            $config['mail_type'] = 'html';
-            $config['charset'] = 'iso-8859-1';
+            $config['smtp_user'] = 'dongphuongsoft@gmail.com';
+            $config['smtp_pass'] = '*197328*#';
+            $config['mail_type'] = 'text';
+            $config['charset'] = 'utf-8';
             $config['wordwrap'] = TRUE;
-            $config['newline'] = "\r\n";
-            $this->email->nitialize($config);            
-            //$this->load->library('email', $config);
+            $config['newline'] = "\r\n";            
+            $this->email->initialize($config);
             
             $data = $this->load->view('requests/templates/email', $data_input, true);
-            $this->email->from('support@chiroro.com', 'Chiroro-Net Customer Support');
+            $this->email->from('dongphuongsoft@gmail.com', 'Chiroro-Net Customer Support');
             //$this->email->to($data['email']);
-            $this->email->to('phuong.nd@chiroro.com.vn');
+            $this->email->to('dongphuongsoft@gmail.com');
             //$this->email->cc('support@chiroro.com');
             $this->email->subject('【申込】大商OEMプラン');
-            $this->email->message($data);
+            $this->email->message($data);            
             $this->email->send();
             $this->email->clear();
 	}

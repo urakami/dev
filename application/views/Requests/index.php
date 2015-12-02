@@ -28,11 +28,10 @@
         <td width="25%" align="center" bgcolor="#0099ff"><font color="#FFFFFF">Cコース</font></td>
         <td width="25%" align="center" bgcolor="#ff5050"><font color="#FFFFFF">Fコース</font></td>
       </tr>
-      <tr>
-        <td width="25%" align="center"><a href="<?php  base_url();?>order_l/input">申し込む</a></td>
-        <td width="25%" align="center"><a href="<?php  base_url();?>order_y/input">申し込む</a></td>
-        <td width="25%" align="center"><a href="<?php  base_url();?>order_c/input">申し込む</a></td>
-        <td width="25%" align="center"><a href="<?php  base_url();?>order_f/input">申し込む</a></td>
+        <td width="25%" align="center"><a href="<?php echo base_url();?>request/kaigisho-dt/order_l/input">申し込む</a></td>
+        <td width="25%" align="center"><a href="<?php echo base_url();?>request/kaigisho-dt/order_y/input">申し込む</a></td>
+        <td width="25%" align="center"><a href="<?php echo base_url();?>request/kaigisho-dt/order_c/input">申し込む</a></td>
+        <td width="25%" align="center"><a href="<?php echo base_url();?>request/kaigisho-dt/order_f/input">申し込む</a></td>
       </tr>
     </table></td>
   </tr>

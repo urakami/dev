@@ -89,7 +89,7 @@
       </tr>
       <tr>
         <td width="20%" class="col3">プラン名</td>
-        <td><font color="#ca66ff">「Lコース」●初15,000円／月2,200円</font>
+        <td><font color="#ff5050">「Lコース」●初15,000円／月2,200円</font>
         <input name="plan_name" type="hidden" size="40" value="「Fコース」●初15,000円／月7,000円" />
         </td>
       </tr>

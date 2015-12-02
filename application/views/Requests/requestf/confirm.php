@@ -36,7 +36,7 @@
       </tr>
       <tr>
         <td width="20%" class="col3">プラン名</td>
-        <td><font color="#ca66ff"><?php echo $data['plan_name']; ?></font></td>
+        <td><font color="#ff5050"><?php echo $data['plan_name']; ?></font></td>
       </tr>
       <tr>
         <td width="20%" class="col3">ディスク容量</td>
