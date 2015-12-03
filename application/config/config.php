@@ -23,7 +23,7 @@
 |
 */
 
-$config['base_url'] = 'http://www.chiroro.co.vn/index.php/';
+$config['base_url'] = 'http://www.chiroro.co.jp/index.php/';
 //$config['base_url'] = '';
 /*
 |--------------------------------------------------------------------------
