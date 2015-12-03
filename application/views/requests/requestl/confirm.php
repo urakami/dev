@@ -3,13 +3,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>大商さまOEMプランお申込ページ | チロロネット</title>
-<link rel="stylesheet" href="<?php echo base_url();?>../css/style.css" type="text/css">
+<link rel="stylesheet" href="<?php echo base_url();?>css/style.css" type="text/css">
 </head>
 
 <body>
 <table width="920" border="0" align="center" cellpadding="5" cellspacing="0">
   <tr>
-    <td><img src="<?php echo base_url();?>../img/logo.gif" width="361" height="34" /></td>
+    <td><img src="<?php echo base_url();?>img/logo.gif" width="361" height="34" /></td>
   </tr>
   <tr>
     <td><hr /></td>
@@ -133,27 +133,27 @@
       </tr>
       <tr>
         <td width="20%" class="col3">郵便番号 <span class="caution">[*]</span></td>
-        <td><?php echo $data['zip_03']; ?></td>
+        <td><?php echo $data['zip_03']; ?>-<?php echo $data['zip_04']; ?></td>
       </tr>
       <tr>
         <td width="20%" class="col3">住所 <span class="caution">[*]</span></td>
-        <td><?php echo $data['zip_04']; ?></td>
-      </tr>
-      <tr>
-        <td width="20%" class="col3">部署名</td>
         <td><?php echo $data['address']; ?></td>
       </tr>
       <tr>
-        <td width="20%" class="col3">役職名</td>
+        <td width="20%" class="col3">部署名</td>
         <td><?php echo $data['division']; ?></td>
       </tr>
       <tr>
-        <td width="20%" class="col3">担当者名 <span class="caution">[*]</span></td>
+        <td width="20%" class="col3">役職名</td>
         <td><?php echo $data['title']; ?></td>
       </tr>
       <tr>
-        <td width="20%" class="col3">担当者名（よみ） <span class="caution">[*]</span></td>
+        <td width="20%" class="col3">担当者名 <span class="caution">[*]</span></td>
         <td><?php echo $data['person_name']; ?></td>
+      </tr>
+      <tr>
+        <td width="20%" class="col3">担当者名（よみ） <span class="caution">[*]</span></td>
+        <td><?php echo $data['person_name_yomi']; ?></td>
       </tr>
       <tr>
         <td width="20%" class="col3">TEL <span class="caution">[*]</span></td>
@@ -198,8 +198,8 @@
   </tr>
   <tr>
     <td align="center">
-        <a href="javascript:void(0);" onclick="goBack()"><img src="<?php echo base_url();?>../img/btn_return.gif" width="200" height="45" /></a>
-        <a href="<?php  base_url();?>complete"><img src="<?php echo base_url();?>../img/btn_order.gif" width="200" height="45" /></a></td>
+        <a href="javascript:void(0);" onclick="goBack()"><img src="<?php echo base_url();?>img/btn_return.gif" width="200" height="45" /></a>
+        <a href="<?php  base_url();?>complete"><img src="<?php echo base_url();?>img/btn_order.gif" width="200" height="45" /></a></td>
   </tr>
   <tr>
     <td>&nbsp;</td>
