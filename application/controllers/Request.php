@@ -7,11 +7,11 @@ class Request extends CI_Controller {
             $this->load->library('session','form_validation');
             $this->load->helper('form');
     }
-        /*Order-L
-         *@Create date: 12/01/2015
-         *@Method: index 
-         *
-         */
+	/*Order-L
+	 *@Create date: 12/01/2015
+	 *@Method: index 
+	 *
+	 */
     public function index()
     {
         $this->load->view('requests/index');
@@ -20,11 +20,11 @@ class Request extends CI_Controller {
         }
     }
         
-        /*Order-L
-         *@Create date: 12/01/2015
-         *@Method: input 
-         *
-         */
+	/*Order-L
+	 *@Create date: 12/01/2015
+	 *@Method: input 
+	 *
+	 */
     public function inputL(){
         //set validation rules
         $this->form_validation->set_rules('domain_name', 'ドメイン名', 'required');

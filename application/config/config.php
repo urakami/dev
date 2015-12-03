@@ -22,8 +22,9 @@
 | a PHP script and you can easily do that on your own.
 |
 */
-//$config['base_url'] = 'http://www.chiroro.co.jp/request/kaigisho-dt/';
-$config['base_url'] = 'http://dev.local/';
+
+//$config['base_url'] = 'http://www.chiroro.co.jp/';
+$config['base_url'] = '';
 
 /*
 |--------------------------------------------------------------------------
