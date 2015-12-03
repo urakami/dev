@@ -3,14 +3,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>大商さまOEMプランお申込ページ | チロロネット</title>
-<link rel="stylesheet" href="<?php echo base_url();?>../css/style.css" type="text/css">
+<link rel="stylesheet" href="<?php echo base_url();?>css/style.css" type="text/css">
 </head>
 
 <body>
-<form action="<?php echo base_url(); ?>request/kaigisho-dt/order_l/input" method="post" id="orderl_input">
+<form action="<?php echo base_url(); ?>order_l/input" method="post" id="orderl_input">
 <table width="920" border="0" align="center" cellpadding="5" cellspacing="0">
   <tr>
-    <td><img src="<?php echo base_url();?>../img/logo.gif" width="361" height="34" /></td>
+    <td><img src="<?php echo base_url();?>img/logo.gif" width="361" height="34" /></td>
   </tr>
   <tr>
     <td><hr /></td>
