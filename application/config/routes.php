@@ -38,32 +38,33 @@
 |
 */
 
-$route['default_controller'] = "welcome";
+$route['default_controller'] = "request";
 $route['404_override'] = '';
 
 /*Order index*/
-$route['request/kaigisho-dt'] = "request/index";
-$route['request/kaigisho-dt/order'] = "request/index";
+$route['kaigisho-dt'] = "request/index";
+//$route['request/kaigisho-dt/order'] = "request/index";
+$route['back_home'] = "request/backHome";
 
 /*Order-L*/
-$route['request/kaigisho-dt/order_l/input'] = "request/inputL";
-$route['request/kaigisho-dt/order_l/confirm'] = "request/confirmL";
-$route['request/kaigisho-dt/order_l/complete'] = "request/completeL";
+$route['order_l/input'] = "request/inputL";
+$route['order_l/confirm'] = "request/confirmL";
+$route['order_l/complete'] = "request/completeL";
 
 /*Order-Y*/
-$route['request/kaigisho-dt/order_y/input'] = "request/inputY";
-$route['request/kaigisho-dt/order_y/confirm'] = "request/confirmY";
-$route['request/kaigisho-dt/order_y/complete'] = "request/completeY";
+$route['order_y/input'] = "request/inputY";
+$route['order_y/confirm'] = "request/confirmY";
+$route['order_y/complete'] = "request/completeY";
 
 /*Order-C*/
-$route['request/kaigisho-dt/order_c/input'] = "request/inputC";
-$route['request/kaigisho-dt/order_c/confirm'] = "request/confirmC";
-$route['request/kaigisho-dt/order_c/complete'] = "request/completeC";
+$route['order_c/input'] = "request/inputC";
+$route['order_c/confirm'] = "request/confirmC";
+$route['order_c/complete'] = "request/completeC";
 
 /*Order-F*/
-$route['request/kaigisho-dt/order_f/input'] = "request/inputF";
-$route['request/kaigisho-dt/order_f/confirm'] = "request/confirmF";
-$route['request/kaigisho-dt/order_f/complete'] = "request/completeF";
+$route['order_f/input'] = "request/inputF";
+$route['order_f/confirm'] = "request/confirmF";
+$route['order_f/complete'] = "request/completeF";
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
