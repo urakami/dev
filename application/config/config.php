@@ -23,9 +23,8 @@
 |
 */
 
-//$config['base_url'] = 'http://www.chiroro.co.jp/';
-$config['base_url'] = '';
-
+$config['base_url'] = 'http://www.chiroro.co.vn/index.php/';
+//$config['base_url'] = '';
 /*
 |--------------------------------------------------------------------------
 | Index File
@@ -235,7 +234,7 @@ $config['cache_path'] = '';
 | MUST set an encryption key.  See the user guide for info.
 |
 */
-$config['encryption_key'] = 'xyz';
+$config['encryption_key'] = 'xyzcwe4bbbk25b';
 
 /*
 |--------------------------------------------------------------------------

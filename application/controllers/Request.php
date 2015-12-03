@@ -3,15 +3,15 @@
 class Request extends CI_Controller {
     function __construct()
     {
-            parent::__construct();
-            $this->load->library('session','form_validation');
-            $this->load->helper('form');
+        parent::__construct();
+        $this->load->library('session','form_validation', 'email');
+        $this->load->helper('form');
     }
-	/*Order-L
-	 *@Create date: 12/01/2015
-	 *@Method: index 
-	 *
-	 */
+    /*Order-L
+     *@Create date: 12/01/2015
+     *@Method: index 
+     *
+     */
     public function index()
     {
         $this->load->view('requests/index');
@@ -20,11 +20,11 @@ class Request extends CI_Controller {
         }
     }
         
-	/*Order-L
-	 *@Create date: 12/01/2015
-	 *@Method: input 
-	 *
-	 */
+    /*Order-L
+     *@Create date: 12/01/2015
+     *@Method: input 
+     *
+     */
     public function inputL(){
         //set validation rules
         $this->form_validation->set_rules('domain_name', 'ドメイン名', 'required');
@@ -119,9 +119,9 @@ class Request extends CI_Controller {
      *
      */        
     public function confirmL(){
-        $data_input['data'] = $this->session->userdata('data_input');
-        if(empty($data_input)){
-            $this->backHome();
+       $data_input['data'] = $this->session->userdata('data_input');
+       if(empty($data_input)){
+           redirect('request/kaigisho-dt');
         }
         $this->load->view('requests/requestl/confirm', $data_input);
     }
@@ -132,12 +132,12 @@ class Request extends CI_Controller {
      *
      */        
     public function completeL(){
+        if(empty($this->session->userdata('data_input'))){
+            redirect('request/kaigisho-dt');
+        }
         $data_input['data'] = $this->session->userdata('data_input');            
         $this->load->view('requests/requestl/complete', $data_input);
-        $this->_sendEmail($data_input);
-        if(!empty($this->session->userdata('data_input'))){
-            $this->session->unset_userdata('data_input');
-        }
+        $this->_sendEmail($data_input);        
     }
     
     /*Order-Y
@@ -146,30 +146,31 @@ class Request extends CI_Controller {
      *
      */
     public function inputY(){
-            //set validation rules
-            $this->form_validation->set_rules('domain_name', 'ドメイン名', 'required');
-    $this->form_validation->set_rules('start_year', '開始年', 'required');
-    $this->form_validation->set_rules('start_month', '開始月', 'required');
-    $this->form_validation->set_rules('start_day', '開始日', 'required');
-    $this->form_validation->set_rules('company_name', '企業名', 'required');
-    $this->form_validation->set_rules('company_name_yomi', '企業名（よみ）', 'required');
-    $this->form_validation->set_rules('zip_03', '郵便番号3', 'required|numeric');
-    $this->form_validation->set_rules('zip_04', '郵便番号4', 'required|numeric');
-    $this->form_validation->set_rules('address', '住所', 'required');
-    $this->form_validation->set_rules('person_name', '担当者名', 'required');
-    $this->form_validation->set_rules('person_name_yomi', '担当者名（よみ）', 'required');
-    $this->form_validation->set_rules('tel', 'Tel', 'required');
-    $this->form_validation->set_rules('email', 'メール', 'required|valid_email');
-    $this->form_validation->set_rules('order_name', 'DP担当者', 'required');
-    $this->form_validation->set_rules('order_email', 'DP担当者メール', 'required|valid_email');
-    $this->form_validation->set_rules('payment', 'お支払い方法', 'required');
-            
-    //set validation message
-    $this->form_validation->set_message('required', '%s 必須入力です');
-    $this->form_validation->set_message('numeric', '数値でなければなりません');
-    $this->form_validation->set_message('valid_email', '正しくフォーマットである必要があります');
-    if($this->input->post()){
-        $data_input = array(
+        //set validation rules
+        $this->form_validation->set_rules('domain_name', 'ドメイン名', 'required');
+        $this->form_validation->set_rules('start_year', '開始年', 'required');
+        $this->form_validation->set_rules('start_month', '開始月', 'required');
+        $this->form_validation->set_rules('start_day', '開始日', 'required');
+        $this->form_validation->set_rules('company_name', '企業名', 'required');
+        $this->form_validation->set_rules('company_name_yomi', '企業名（よみ）', 'required');
+        $this->form_validation->set_rules('zip_03', '郵便番号3', 'required|numeric');
+        $this->form_validation->set_rules('zip_04', '郵便番号4', 'required|numeric');
+        $this->form_validation->set_rules('address', '住所', 'required');
+        $this->form_validation->set_rules('person_name', '担当者名', 'required');
+        $this->form_validation->set_rules('person_name_yomi', '担当者名（よみ）', 'required');
+        $this->form_validation->set_rules('tel', 'Tel', 'required');
+        $this->form_validation->set_rules('email', 'メール', 'required|valid_email');
+        $this->form_validation->set_rules('order_name', 'DP担当者', 'required');
+        $this->form_validation->set_rules('order_email', 'DP担当者メール', 'required|valid_email');
+        $this->form_validation->set_rules('payment', 'お支払い方法', 'required');
+
+        //set validation message
+        $this->form_validation->set_message('required', '%s 必須入力です');
+        $this->form_validation->set_message('numeric', '数値でなければなりません');
+        $this->form_validation->set_message('valid_email', '正しくフォーマットである必要があります');
+        if($this->input->post())
+        {
+            $data_input = array(
                    "domain_name"        => $this->input->post("domain_name"),
                    "dns"                => $this->input->post("dns"),
                    "start_year"         => $this->input->post("start_year"),
@@ -221,13 +222,13 @@ class Request extends CI_Controller {
             );
 
         if ($this->form_validation->run() == TRUE) 
-            {      
-               $this->session->set_userdata('data_input', $data_input);          
-                redirect(base_url().'request/kaigisho-dt/order_y/confirm');
-            }else{
-                $data['data_old'] =  $data_input;
-                $this->load->view('requests/requesty/input', $data); 
-            }
+        {
+            $this->session->set_userdata('data_input', $data_input);          
+            redirect(base_url().'request/kaigisho-dt/order_y/confirm');
+        }else{
+            $data['data_old'] =  $data_input;
+            $this->load->view('requests/requesty/input', $data); 
+        }
         }else{
            $this->load->view('requests/requesty/input'); 
         }
@@ -238,10 +239,11 @@ class Request extends CI_Controller {
      *@Method: confirm 
      *
      */        
-    public function confirmY(){
-        $data_input['data'] = $this->session->userdata('data_input');
-        if(empty($data_input)){
-            $this->backHome();
+    public function confirmY()
+    {
+       $data_input['data'] = $this->session->userdata('data_input');
+       if(empty($data_input)){
+           redirect('request/kaigisho-dt');
         }
         $this->load->view('requests/requesty/confirm', $data_input);
     }
@@ -251,13 +253,15 @@ class Request extends CI_Controller {
      *@Method: complete 
      *
      */
-    public function completeY(){
+    public function completeY()
+    {
+        if(empty($this->session->userdata('data_input')))
+        {
+            redirect('request/kaigisho-dt');
+        }
         $data_input['data'] = $this->session->userdata('data_input');            
         $this->load->view('requests/requestc/complete', $data_input);
-        $this->_sendEmail($data_input);
-        if(!empty($this->session->userdata('data_input'))){
-            $this->session->unset_userdata('data_input');
-        }
+        $this->_sendEmail($data_input);        
     }
 
     /*Order-C
@@ -265,7 +269,8 @@ class Request extends CI_Controller {
      *@Method: input 
      *
      */
-    public function inputC(){
+    public function inputC()
+    {
         //set validation rules
         $this->form_validation->set_rules('domain_name', 'ドメイン名', 'required');
         $this->form_validation->set_rules('start_year', '開始年', 'required');
@@ -288,7 +293,8 @@ class Request extends CI_Controller {
         $this->form_validation->set_message('required', '%s 必須入力です');
         $this->form_validation->set_message('numeric', '数値でなければなりません');
         $this->form_validation->set_message('valid_email', '正しくフォーマットである必要があります');
-        if($this->input->post()){
+        if($this->input->post())
+        {
             $data_input = array(
                    "domain_name"        => $this->input->post("domain_name"),
                    "dns"                => $this->input->post("dns"),
@@ -352,17 +358,17 @@ class Request extends CI_Controller {
                $this->load->view('requests/requestc/input'); 
             }
         }
-       
+
     /*Order-L
      *@Create date: 12/01/2015        
      *@Method: confirm 
      *
-     */        
+     */
     public function confirmC()
     {
-        $data_input['data'] = $this->session->userdata('data_input');
-        if(empty($data_input)){
-            $this->backHome();
+       $data_input['data'] = $this->session->userdata('data_input');
+       if(empty($data_input)){
+           redirect('request/kaigisho-dt');
         }
         $this->load->view('requests/requestc/confirm', $data_input);
     }
@@ -371,14 +377,14 @@ class Request extends CI_Controller {
      *@Create date: 12/01/2015        
      *@Method: complete 
      *
-     */        
+     */
     public function completeC(){
+        if(empty($this->session->userdata('data_input'))){
+            redirect('request/kaigisho-dt');
+        }
         $data_input['data'] = $this->session->userdata('data_input');
         $this->load->view('requests/requestc/complete', $data_input);
-        $this->_sendEmail($data_input);
-        if(!empty($this->session->userdata('data_input'))){
-            $this->session->unset_userdata('data_input');
-        }
+        $this->_sendEmail($data_input);      
     }
     
     /*Order-F
@@ -404,7 +410,7 @@ class Request extends CI_Controller {
         $this->form_validation->set_rules('order_name', 'DP担当者', 'required');
         $this->form_validation->set_rules('order_email', 'DP担当者メール', 'required|valid_email');
         $this->form_validation->set_rules('payment', 'お支払い方法', 'required');
-                
+
         //set validation message
         $this->form_validation->set_message('required', '%s 必須入力です');
         $this->form_validation->set_message('numeric', '数値でなければなりません');
@@ -460,15 +466,14 @@ class Request extends CI_Controller {
                     "payment"            => $this->input->post("payment"),
                     "message"            => $this->input->post("message"),               
                 );
-
         if ($this->form_validation->run() == TRUE) 
-            {      
-               $this->session->set_userdata('data_input', $data_input);          
-                redirect(base_url().'request/kaigisho-dt/order_f/confirm');
-            }else{
-                $data['data_old'] =  $data_input;
-                $this->load->view('requests/requestf/input', $data); 
-            }
+        {
+            $this->session->set_userdata('data_input', $data_input);          
+            redirect(base_url().'request/kaigisho-dt/order_f/confirm');
+        }else{
+            $data['data_old'] =  $data_input;
+            $this->load->view('requests/requestf/input', $data); 
+        }
         }else{
            $this->load->view('requests/requestf/input'); 
         }
@@ -481,9 +486,9 @@ class Request extends CI_Controller {
      */
     public function confirmF()
     {
-        $data_input['data'] = $this->session->userdata('data_input');            
+        $data_input['data'] = $this->session->userdata('data_input');
         if(empty($data_input)){
-            $this->backHome();
+           redirect('request/kaigisho-dt');
         }
         $this->load->view('requests/requestf/confirm', $data_input);
     }
@@ -495,21 +500,12 @@ class Request extends CI_Controller {
      */
     public function completeF()
     {
+        if(empty($this->session->userdata('data_input'))){
+           redirect('request/kaigisho-dt');
+        }
         $data_input['data'] = $this->session->userdata('data_input');            
         $this->load->view('requests/requestc/complete', $data_input);
         $this->_sendEmail($data_input);
-        if(!empty($this->session->userdata('data_input'))){
-            $this->session->unset_userdata('data_input');
-        }
-    }
-
-    /*Order
-     *@Create date: 12/01/2015
-     *@Method: back home page 
-     *
-     */        
-    public function backHome(){
-        redirect('request/kaigisho-dt');
     }
 
     /*Order
@@ -517,10 +513,10 @@ class Request extends CI_Controller {
      *@Method: sendEmail 
      *
      */
-    private function _sendEmail($data=null){
-        $config['protocol'] = 'smtp';
-        $config['smtp_host'] = 'ssl://smtp.googlemail.com';
-        $config['smtp_port'] = '465';
+    private function _sendEmail($data_input=null){
+        $config['protocol'] = '';
+        $config['smtp_host'] = '';
+        $config['smtp_port'] = '';
         $config['smtp_user'] = '';
         $config['smtp_pass'] = '';
         $config['mail_type'] = 'html';
@@ -529,13 +525,18 @@ class Request extends CI_Controller {
         $config['newline'] = "\r\n";
         $this->email->initialize($config);
 
-        $data = $this->load->view('requests/templates/email', $data, true);
+        $msg = $this->load->view('requests/templates/email', $data_input, true);
         $this->email->from('support@chiroro.com', 'Chiroro-Net Customer Support');
-        $this->email->to($data['data']['email']);       
+        $this->email->to($data_input['data']['email']);       
         $this->email->cc('support@chiroro.com');
         $this->email->subject('【申込】大商OEMプラン');
-        $this->email->message($data);            
+        $this->email->message($msg);
         $this->email->send();
         $this->email->clear();
+
+        if(!empty($this->session->userdata('data_input'))){
+            $this->session->unset_userdata('data_input');
+        }
+
     }
 }

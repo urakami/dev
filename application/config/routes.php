@@ -44,7 +44,6 @@ $route['404_override'] = '';
 /*Order index*/
 $route['request/kaigisho-dt'] = "request/index";
 $route['request/kaigisho-dt/order'] = "request/index";
-$route['request/back_home'] = "request/backHome";
 
 /*Order-L*/
 $route['request/kaigisho-dt/order_l/input'] = "request/inputL";
